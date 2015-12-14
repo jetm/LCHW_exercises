@@ -11,7 +11,7 @@ TESTS=$(patsubst %.c,%,$(TEST_SRC))
 TARGET=build/liblcthw.a
 
 # The Target Build
-all: $(TARGET) $(SO_TARGET) tests
+all: $(TARGET) tests
 
 dev: CFLAGS=-g -Wall -Wextra -Isrc $(OPTFLAGS)
 dev: all
