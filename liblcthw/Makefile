@@ -13,7 +13,7 @@ TARGET=build/liblcthw.a
 # The Target Build
 all: $(TARGET) tests
 
-dev: CFLAGS=-g -Wall -Wextra -Isrc $(OPTFLAGS)
+dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS)
 dev: all
 
 $(TARGET): CFLAGS += -fPIC
