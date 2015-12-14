@@ -27,7 +27,8 @@ build:
 
 # The Unit Tests
 .PHONY: tests
-tests: CFLAGS += $(TARGET)
+$(TESTS):
+	$(CC) $(CFLAGS) -o $@ $@.c $(TARGET)
 tests: $(TESTS)
 	sh ./tests/runtests.sh
 
