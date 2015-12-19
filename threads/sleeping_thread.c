@@ -8,7 +8,6 @@ pthread_cond_t fakeCond = PTHREAD_COND_INITIALIZER;
 void mywait(int timeInSec) {
   struct timespec timeToWait;
   struct timeval now;
-  int rt;
 
   gettimeofday(&now, NULL);
 
@@ -16,7 +15,7 @@ void mywait(int timeInSec) {
   timeToWait.tv_nsec = now.tv_usec * 1000;
 
   pthread_mutex_lock(&fakeMutex);
-  rt = pthread_cond_timedwait(&fakeCond, &fakeMutex, &timeToWait);
+  pthread_cond_timedwait(&fakeCond, &fakeMutex, &timeToWait);
   pthread_mutex_unlock(&fakeMutex);
   printf("\nDone\n");
 }
