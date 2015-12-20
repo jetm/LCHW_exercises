@@ -20,15 +20,19 @@ void mywait(int timeInSec) {
   printf("\nDone\n");
 }
 
-void fun(void* arg) {
+void *fun(void* arg) {
   printf("\nIn thread\n");
   mywait(5);
+  pthread_exit(NULL);
 }
 
 int main() {
   pthread_t thread;
   void* ret;
 
-  pthread_create(&thread, NULL, (void *)fun, NULL);
+  pthread_create(&thread, NULL, fun, NULL);
   pthread_join(thread, &ret);
+
+  /* Last thing that main() should do */
+  pthread_exit(NULL);
 }
